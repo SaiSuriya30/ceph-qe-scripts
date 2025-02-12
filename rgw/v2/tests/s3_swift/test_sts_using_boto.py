@@ -80,7 +80,7 @@ def test_exec(config, ssh_con):
     else:
         log.info("RGW service restarted")
 
-    auth = Auth(user1, ssh_con, ssl=config.ssl)
+    auth = Auth(user1, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
     iam_client = auth.do_auth_iam_client()
 
     policy_document = json.dumps(config.sts["policy_document"]).replace(" ", "")
@@ -128,7 +128,7 @@ def test_exec(config, ssh_con):
             log.info("Cluster is multisite")
             ssh_con = reusable.get_remote_conn_in_multisite()
 
-        auth = Auth(user2, ssh_con, ssl=config.ssl)
+        auth = Auth(user2, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         sts_client = auth.do_auth_sts_client()
 
         log.info("assuming role")
@@ -148,7 +148,7 @@ def test_exec(config, ssh_con):
         }
 
         log.info("got the credentials after assume role")
-        s3client = Auth(assumed_role_user_info, ssh_con, ssl=config.ssl)
+        s3client = Auth(assumed_role_user_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         s3_client_rgw = s3client.do_auth()
 
         io_info_initialize.initialize(basic_io_structure.initial())

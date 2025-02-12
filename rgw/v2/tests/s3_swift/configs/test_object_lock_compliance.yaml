@@ -2,6 +2,7 @@
 # Related BZ: https://bugzilla.redhat.com/show_bug.cgi?id=1890843
 # script: test_object_lock.py - Test object lock configuration for bucket
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 2
   objects_count: 100

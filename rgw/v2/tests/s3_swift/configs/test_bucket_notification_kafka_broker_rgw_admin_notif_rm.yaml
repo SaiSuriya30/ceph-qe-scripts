@@ -1,6 +1,7 @@
 # polarion_id: CEPH-83582345
 # test_script: test_bucket_notifications.py
 config:
+ haproxy: true
  user_count: 1
  bucket_count: 2
  objects_count: 25

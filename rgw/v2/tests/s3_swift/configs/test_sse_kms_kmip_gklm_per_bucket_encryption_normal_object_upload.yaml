@@ -1,6 +1,7 @@
 # script: test_sse_s3_kms_with_vault.py
 # polarion-id: CEPH-83592485
 config:
+ haproxy: true
  user_count: 1
  encryption_keys: kms
  bucket_count: 2

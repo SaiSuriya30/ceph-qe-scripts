@@ -163,12 +163,12 @@ def test_exec(config, ssh_con):
         users_info.append(user_info)
         if config.test_ops.get("enable_version_by_s3", False):
             write_bucket_io_info = BucketIoInfo()
-            auth_s3 = s3_auth(user_info, ssh_con, ssl=config.ssl)
+            auth_s3 = s3_auth(user_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
             s3_rgw_conn = auth_s3.do_auth()
             ip_and_port = s3cmd_reusable.get_rgw_ip_and_port(ssh_con)
             s3cmd_auth.do_auth(user_info, ip_and_port)
         subuser_info = swiftlib.create_non_tenant_sub_users(1, user_info)
-        auth = Auth(subuser_info[-1], ssh_con, config.ssl)
+        auth = Auth(subuser_info[-1], ssh_con, config.ssl,haproxy=config.haproxy)
         rgw = auth.do_auth()
     else:
         tenants_user_info = []
@@ -178,14 +178,14 @@ def test_exec(config, ssh_con):
         )
         tenants_user_info.append(tenant_user_info)
         user_info = umgmt.create_subuser(tenant_name=tenant, user_id=user_name)
-        auth = Auth(user_info, ssh_con, config.ssl)
+        auth = Auth(user_info, ssh_con, config.ssl,haproxy=config.haproxy)
         rgw = auth.do_auth()
 
     if config.test_ops.get("new_user", False):
         new_user_info = swiftlib.create_users(1)[-1]
         users_info.append(new_user_info)
         new_sub_user_info = swiftlib.create_non_tenant_sub_users(1, new_user_info)
-        new_auth = Auth(new_sub_user_info[-1], ssh_con, config.ssl)
+        new_auth = Auth(new_sub_user_info[-1], ssh_con, config.ssl,haproxy=config.haproxy)
         rgw_client = new_auth.do_auth_using_client()
 
     if config.test_ops.get("new_tenant", False):
@@ -195,7 +195,7 @@ def test_exec(config, ssh_con):
         )
         tenants_user_info.append(new_tenant_info)
         new_user_info = umgmt.create_subuser(tenant_name=new_tenant, user_id=user_name)
-        new_auth = Auth(new_user_info, ssh_con, config.ssl)
+        new_auth = Auth(new_user_info, ssh_con, config.ssl,haproxy=config.haproxy)
         rgw_client = new_auth.do_auth_using_client()
 
     for cc in range(config.container_count):
@@ -848,7 +848,7 @@ def test_exec(config, ssh_con):
                 )
             log.info("With swift at root set, S3 access should fail")
             bucket_name_to_create = "test_bucket"
-            auth_s3 = s3_auth(user_info, ssh_con, ssl=config.ssl)
+            auth_s3 = s3_auth(user_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
             s3_rgw_conn = auth_s3.do_auth()
             try:
                 bucket = reusable.create_bucket(

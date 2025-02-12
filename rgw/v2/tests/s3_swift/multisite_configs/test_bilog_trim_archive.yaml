@@ -2,6 +2,7 @@
 # script: test_bilog_trimming.py
 # polarion_id: CEPH-83575468
 config:
+  haproxy: true
   remote_zone: archive
   log_trimming: bilog
   test_bilog_trim_on_non_existent_bucket: true

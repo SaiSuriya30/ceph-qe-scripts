@@ -1,6 +1,7 @@
 # upload type: non multipart
 # script: test_Mbuckets_with_Nobjects.py
 config:
+  haproxy: true
   user_count: 10
   modify_user: true
   suspend_user: true

@@ -3,6 +3,7 @@
 # Polarian: CEPH-83575194 & CEPH-83575470
 # customers: Fujitsu, ISbank, Inditex, DRW, GCHQ
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 2
   objects_count: 100

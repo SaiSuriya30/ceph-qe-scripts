@@ -1,3 +1,4 @@
 #CEPH-83576431
 config:
+  haproxy: true
   user_count: 1

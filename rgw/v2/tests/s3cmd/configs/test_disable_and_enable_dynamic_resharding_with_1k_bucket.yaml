@@ -1,6 +1,7 @@
 # Polarian TC : CEPH-11478
 # script: test_s3cmd.py
 config:
+  haproxy: true
   bucket_count: 1000
   objects_count: 15
   max_objects_per_shard: 1

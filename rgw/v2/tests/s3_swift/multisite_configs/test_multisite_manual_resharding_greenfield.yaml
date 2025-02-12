@@ -1,6 +1,7 @@
 # script: test_Mbuckets_with_Nobjects.py
 # Polarian id: CEPH-83573595
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 2
   objects_count: 100

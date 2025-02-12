@@ -1,3 +1,4 @@
 #Verification of CEPH-83574806: Multiple delete marker not created during object deletion in versioned bucket through s3cmd
 config:
+  haproxy: true
   delete_marker_check: true

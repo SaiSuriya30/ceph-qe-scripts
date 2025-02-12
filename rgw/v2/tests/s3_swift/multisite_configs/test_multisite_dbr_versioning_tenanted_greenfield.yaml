@@ -1,5 +1,6 @@
 # polarian:CEPH-83573596
 config:
+  haproxy: true
   user_count: 1
   user_type: tenanted
   bucket_count: 2

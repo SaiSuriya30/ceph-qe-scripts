@@ -1,5 +1,6 @@
 # test case id: CEPH-83581997
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 1
   remote_zone: archive

@@ -1,6 +1,7 @@
 # script: test_cloud_transition.py
 # Polarion ID : CEPH-83575497
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 1
   objects_count: 20

@@ -1,6 +1,7 @@
 # Polarian id: CEPH-11574
 # Script: test_bucket_policy_with_tenant_user.py
 config:
+    haproxy: true
     bucket_count: 2
     objects_count: 15
     version_count: 5

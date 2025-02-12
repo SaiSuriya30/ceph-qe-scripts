@@ -1,6 +1,7 @@
 # script: user_create.py
 # Polarian: CEPH-83575880
 config:
+    haproxy: true
     user_count: 1
     user_type: non-tenanted
     test_ops:

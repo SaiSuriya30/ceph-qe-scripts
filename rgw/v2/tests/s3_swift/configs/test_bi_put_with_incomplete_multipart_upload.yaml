@@ -1,6 +1,7 @@
 # CEPH-83574876 - Verify 'bi put` uses right bucket index shard
 # script: ceph-qe-scripts/rgw/v2/tests/s3_swift/test_Mbuckets_with_Nobjects.py
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 1
   objects_count: 1

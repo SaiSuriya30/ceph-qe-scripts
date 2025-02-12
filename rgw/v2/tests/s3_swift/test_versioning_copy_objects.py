@@ -53,7 +53,7 @@ def test_exec(config, ssh_con):
     # create user
     s3_user = s3lib.create_users(1)[0]
     # authenticate
-    auth = Auth(s3_user, ssh_con, ssl=config.ssl)
+    auth = Auth(s3_user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
     rgw_conn = auth.do_auth()
     b1_name = utils.gen_bucket_name_from_userid(s3_user["user_id"], rand_no=1)
     b1_k1_name = b1_name + ".key.1"  # key1
@@ -207,7 +207,7 @@ def test_exec(config, ssh_con):
     if config.delete_using_different_user:
         log.info("performing version deletion using different user")
         diff_user = s3lib.create_users(1)[0]
-        diff_user_auth = Auth(diff_user, ssh_con, ssl=config.ssl)
+        diff_user_auth = Auth(diff_user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         diff_user_conn = diff_user_auth.do_auth()
         log.info("Trying to delete objects from different user")
 

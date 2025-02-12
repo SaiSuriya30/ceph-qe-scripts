@@ -1,6 +1,7 @@
 # Polarian: CEPH-83574423
 # script: test_dynamic_bucket_resharding.py
 config:
+  haproxy: true
   objects_count: 100
   objects_size_range:
     min: 15

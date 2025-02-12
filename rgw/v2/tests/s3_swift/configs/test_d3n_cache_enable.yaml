@@ -1,2 +1,3 @@
 config:
+  haproxy: true
   d3n_feature: true

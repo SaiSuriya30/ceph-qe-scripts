@@ -1,6 +1,7 @@
 # polarion test case id: CEPH-83586489
 # test scripts : test_sts_using_boto.py
 config:
+     haproxy: true
      bucket_count: 2
      objects_count: 50
      encryption_keys: s3

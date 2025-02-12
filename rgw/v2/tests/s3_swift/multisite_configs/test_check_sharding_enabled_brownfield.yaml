@@ -1,3 +1,4 @@
 config:
+  haproxy: true
   dbr_scenario: brownfield
   enable_sharding: true

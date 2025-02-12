@@ -52,7 +52,7 @@ def test_exec(config, ssh_con):
     all_users_info = s3lib.create_users(config.user_count)
     for each_user in all_users_info:
         # authenticate
-        auth = Auth(each_user, ssh_con, ssl=config.ssl)
+        auth = Auth(each_user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         if config.use_aws4 is True:
             rgw_conn = auth.do_auth(**{"signature_version": "s3v4"})
         else:
@@ -123,7 +123,7 @@ def test_exec(config, ssh_con):
     if config.test_ops.get("create_bucket", False):
         for each_user in all_users_info:
             # authenticate
-            auth = Auth(each_user, ssh_con, ssl=config.ssl)
+            auth = Auth(each_user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
             if config.use_aws4 is True:
                 rgw_conn = auth.do_auth(**{"signature_version": "s3v4"})
             else:

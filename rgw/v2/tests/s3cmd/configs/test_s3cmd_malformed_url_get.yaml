@@ -1,5 +1,6 @@
 # script: test_bucket_stats.py
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 1
   permutation_count: 3

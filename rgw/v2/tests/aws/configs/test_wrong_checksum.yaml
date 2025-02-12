@@ -1,6 +1,7 @@
 # script: test_checksum.py
 # polarion-ID: CEPH-83591699
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 1
   objects_count: 1

@@ -75,7 +75,7 @@ def test_exec(config, ssh_con):
     # create user export for each user and bucket export for each bucket under
     if config.test_ops["create_user_export"]:
         for each_user in user_info:
-            auth = Auth(each_user, ssh_con, ssl=config.ssl)
+            auth = Auth(each_user, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
             rgw_conn = auth.do_auth()
             uid = each_user["user_id"]
             pseudo = f"/{uid}"

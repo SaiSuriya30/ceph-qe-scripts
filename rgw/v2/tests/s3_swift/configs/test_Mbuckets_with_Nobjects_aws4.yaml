@@ -1,6 +1,7 @@
 # upload type: non multipart
 # script: test_Mbuckets_with_Nobjects.py
 config:
+  haproxy: true
   use_aws4: true
   user_count: 1
   bucket_count: 2

@@ -1,6 +1,7 @@
 # script: test_bucket_lifecycle_object_expiration_transition.py
 # CEPH-11192 - Test object prefixes with delimiter '/', '_', '-', '.'
 config:
+  haproxy: true
   bucket_count: 2
   objects_count: 100
   objects_size_range:

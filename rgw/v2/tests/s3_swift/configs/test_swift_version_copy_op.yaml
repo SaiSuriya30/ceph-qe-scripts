@@ -1,5 +1,6 @@
 # test case id: CEPH-10646
 config:
+  haproxy: true
   container_count: 2
   objects_count: 100
   version_count: 4

@@ -98,7 +98,7 @@ def test_exec(config, ssh_con):
     else:
         log.info("RGW service restarted")
 
-    auth = Auth(user1, ssh_con, ssl=config.ssl)
+    auth = Auth(user1, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
     iam_client = auth.do_auth_iam_client()
 
     policy_document = json.dumps(config.sts["policy_document"]).replace(" ", "")
@@ -132,7 +132,7 @@ def test_exec(config, ssh_con):
 
         log.info(f"put_policy_response {put_policy_response}")
 
-        auth = Auth(user2, ssh_con, ssl=config.ssl)
+        auth = Auth(user2, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         sts_client = auth.do_auth_sts_client()
 
         assume_role_response = sts_client.assume_role(

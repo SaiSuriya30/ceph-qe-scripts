@@ -2,6 +2,7 @@
 # script: test_bilog_trimming.py
 # polarion_id: CEPH-10544
 config:
+  haproxy: true
   log_trimming: mdlog
   user_count: 1
   bucket_count: 2

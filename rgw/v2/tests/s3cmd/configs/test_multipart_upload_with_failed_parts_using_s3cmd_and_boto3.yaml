@@ -3,6 +3,7 @@
 # BZ: https://bugzilla.redhat.com/show_bug.cgi?id=2266680
 # test_script: test_s3cmd.py
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 2
   objects_count: 100

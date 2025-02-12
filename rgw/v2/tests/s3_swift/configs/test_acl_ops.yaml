@@ -1,4 +1,5 @@
 # script: test_acl_ops.py
 config:
+  haproxy: true
   test_ops:
     set_acl: true

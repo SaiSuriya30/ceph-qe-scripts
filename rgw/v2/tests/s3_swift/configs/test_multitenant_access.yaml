@@ -2,6 +2,7 @@
 # script: test_multitenant_user_access.py
 # TCS [CEPH-9740, CEPH-9741] Covers both the tests
 config:
+  haproxy: true
   objects_size_range:
     min: 5
     max: 15
