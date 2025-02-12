@@ -1,5 +1,6 @@
 # CEPH-83575472, bug-2174235
 config:
+  haproxy: true
   test_with_bucket_index_shards: true
   objects_count: 100
   objects_size_range:

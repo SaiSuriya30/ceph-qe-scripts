@@ -62,7 +62,7 @@ def test_exec(config, ssh_con):
     all_users_info = s3lib.create_users(config.user_count)
     for each_user in all_users_info:
         # authentication
-        auth = Auth(each_user, ssh_con, ssl=config.ssl)
+        auth = Auth(each_user, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
         s3_conn_client = auth.do_auth_using_client()
         # create buckets with object lock configuration
         if config.test_ops["create_bucket"] is True:

@@ -86,7 +86,7 @@ def test_exec(config, ssh_con):
     utils.exec_shell_cmd(add_caps_cmd)
 
     # user1 auth with iam_client
-    auth = Auth(user1, ssh_con, ssl=config.ssl)
+    auth = Auth(user1, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
     iam_client = auth.do_auth_iam_client()
 
     # policy document
@@ -127,7 +127,7 @@ def test_exec(config, ssh_con):
     bucket_name = "testbucket" + user1["user_id"]
 
     # authenticating user1 for bucket creation operation
-    auth = Auth(user1, ssh_con, ssl=config.ssl)
+    auth = Auth(user1, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
     user1_info = {
         "access_key": user1["access_key"],
         "secret_key": user1["secret_key"],
@@ -167,7 +167,7 @@ def test_exec(config, ssh_con):
                     user1_info,
                 )
 
-    auth = Auth(user2, ssh_con, ssl=config.ssl)
+    auth = Auth(user2, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
     sts_client = auth.do_auth_sts_client()
 
     log.info("assuming role")
@@ -186,7 +186,7 @@ def test_exec(config, ssh_con):
     }
     log.info("got the credentials after assume role")
 
-    s3client = Auth(assumed_role_user_info, ssh_con, ssl=config.ssl)
+    s3client = Auth(assumed_role_user_info, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
     s3_client = s3client.do_auth_using_client()
 
     io_info_initialize.initialize(basic_io_structure.initial())

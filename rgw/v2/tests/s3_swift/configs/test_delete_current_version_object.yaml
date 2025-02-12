@@ -1,5 +1,6 @@
 # CEPH-10647
 config:
+     haproxy: true
      user_count: 1
      bucket_count: 2
      objects_count: 2

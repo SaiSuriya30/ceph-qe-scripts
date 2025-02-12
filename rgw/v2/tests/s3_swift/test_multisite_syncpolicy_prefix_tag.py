@@ -67,7 +67,7 @@ def test_exec(config, ssh_con):
     tag = "colour=red"
 
     for user in user_info:
-        auth = Auth(user, ssh_con, ssl=config.ssl)
+        auth = Auth(user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         rgw_conn = auth.do_auth()
 
         buckets = []

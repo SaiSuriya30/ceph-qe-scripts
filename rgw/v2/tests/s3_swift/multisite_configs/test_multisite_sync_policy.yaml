@@ -1,6 +1,7 @@
 # Polarian TC CEPH-83575360
 # bug 2087986
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 2
   objects_count: 0

@@ -65,10 +65,10 @@ def test_exec(config, ssh_con):
     tenant1 = "tenant1" + "_" + str(uuid.uuid4().hex[:16])
     tenant2 = "tenant2" + "_" + str(uuid.uuid4().hex[:16])
     t1_u1_info = create_tenant_user(tenant_name=tenant1, user_id=user_names[0])
-    t1_u1_auth = Auth(t1_u1_info, ssh_con, ssl=config.ssl)
+    t1_u1_auth = Auth(t1_u1_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
     t1_u1 = t1_u1_auth.do_auth()
     t2_u1_info = create_tenant_user(tenant_name=tenant2, user_id=user_names[0])
-    t2_u1_auth = Auth(t2_u1_info, ssh_con, ssl=config.ssl)
+    t2_u1_auth = Auth(t2_u1_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
     t2_u1 = t2_u1_auth.do_auth()
     t1_u1_b1 = reusable.create_bucket(
         bucket_name=Bucket_names[0], rgw=t1_u1, user_info=t1_u1_info
@@ -94,7 +94,7 @@ def test_exec(config, ssh_con):
         user_info=t1_u1_info,
     )
     t2_u2_info = create_tenant_user(tenant_name=tenant2, user_id=user_names[1])
-    t2_u2_auth = Auth(t2_u2_info, ssh_con, ssl=config.ssl)
+    t2_u2_auth = Auth(t2_u2_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
     t2_u2 = t2_u2_auth.do_auth()
     # will try to access the bucket and objects in both tenants
     # access t1_u1_b1

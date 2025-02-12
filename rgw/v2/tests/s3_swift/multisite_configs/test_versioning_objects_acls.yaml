@@ -2,6 +2,7 @@
 # script: test_versioning_with_objects.py
 # CEPH - 9190
 config:
+     haproxy: true
      user_count: 1
      bucket_count: 2
      objects_count: 100

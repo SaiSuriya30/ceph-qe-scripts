@@ -1,6 +1,7 @@
 # Polarian - CEPH-83575862 test how many versions of a key can be archived
 # test_script : test_sse_s3_kms_with_vault.py
 config:
+ haproxy: true
  user_count: 1
  test_sync_consistency_bucket_stats: true
  remote_zone: archive

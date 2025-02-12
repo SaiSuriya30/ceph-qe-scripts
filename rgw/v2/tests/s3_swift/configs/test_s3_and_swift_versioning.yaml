@@ -1,6 +1,7 @@
 # test case id: CEPH-10649
 # script: test_swift_basic_ops.py
 config:
+    haproxy: true
     user_type: non-tenanted
     container_count: 3
     objects_count: 100

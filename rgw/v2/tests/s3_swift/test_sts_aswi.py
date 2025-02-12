@@ -117,12 +117,12 @@ def test_exec(config, ssh_con):
     else:
         log.info("RGW service restarted")
 
-    auth = Auth(user1, ssh_con, ssl=config.ssl)
+    auth = Auth(user1, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
     iam_client = auth.do_auth_iam_client()
     user1_client = auth.do_auth_using_client()
     rgw_conn_user1 = auth.do_auth()
 
-    auth2 = Auth(user2, ssh_con, ssl=config.ssl)
+    auth2 = Auth(user2, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
     iam_client2 = auth2.do_auth_iam_client()
     sts_client = auth2.do_auth_sts_client()
     log.info(f"sts client: {sts_client}")
@@ -237,7 +237,7 @@ def test_exec(config, ssh_con):
         "session_token": assume_role_response["Credentials"]["SessionToken"],
         "user_id": user2["user_id"],
     }
-    s3_auth = Auth(assumed_role_user_info, ssh_con, ssl=config.ssl)
+    s3_auth = Auth(assumed_role_user_info, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
     rgw_conn_using_sts_creds = s3_auth.do_auth()
     rgw_client_using_sts_creds = s3_auth.do_auth_using_client()
     sts_user_sns_client = s3_auth.do_auth_sns_client()

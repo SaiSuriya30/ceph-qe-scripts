@@ -116,10 +116,10 @@ def test_exec(config, ssh_con):
 
     for each_user in all_users_info:
         # authenticate
-        auth = Auth(each_user, ssh_con, ssl=config.ssl)
+        auth = Auth(each_user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         rgw_conn = auth.do_auth()
         if "MultisiteReplication" in event_types:
-            other_site_auth = Auth(each_user, other_site_ssh_con, ssl=config.ssl)
+            other_site_auth = Auth(each_user, other_site_ssh_con, ssl=config.ssl,haproxy=config.haproxy)
             other_site_rgw_conn = other_site_auth.do_auth()
 
         # authenticate sns client.

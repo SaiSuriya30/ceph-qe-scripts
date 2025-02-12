@@ -54,7 +54,7 @@ def test_exec(config, ssh_con):
     all_users_info = s3lib.create_users(config.user_count)
     for each_user in all_users_info:
         # authenticate
-        auth = Auth(each_user, ssh_con, ssl=config.ssl)
+        auth = Auth(each_user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         rgw_conn = auth.do_auth()
 
         if config.test_ops["create_bucket"] is True:

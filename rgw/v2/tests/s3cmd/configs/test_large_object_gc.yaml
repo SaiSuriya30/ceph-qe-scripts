@@ -1,6 +1,7 @@
 # BZ id : 1892644#c52
 # script: test_large_object_gc.py
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 2
   objects_count: 100

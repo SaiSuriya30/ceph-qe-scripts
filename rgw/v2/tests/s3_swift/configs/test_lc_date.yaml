@@ -1,5 +1,6 @@
 # script: test_bucket_lifecycle_object_expiration_transition.py
 config:
+  haproxy: true
   enable_resharding: True
   shards: 211
   sharding_type: manual

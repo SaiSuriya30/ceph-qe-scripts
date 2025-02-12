@@ -68,7 +68,7 @@ def test_exec(config, ssh_con):
     # create user
     user_info = s3lib.create_users(config.user_count)
     for each_user in user_info:
-        auth = Auth(each_user, ssh_con, ssl=config.ssl)
+        auth = Auth(each_user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         rgw_conn = auth.do_auth()
         rgw_conn2 = auth.do_auth_using_client()
         notification = None

@@ -1,4 +1,5 @@
 config:
+     haproxy: true
      user_count: 1
      bucket_count: 2
      pseudo_dir_count: 50

@@ -2,4 +2,5 @@
 # bucket policy will be modified to take additional policies with already existing policy.
 # TC 11214
 config:
+  haproxy: true
   bucket_policy_op: modify

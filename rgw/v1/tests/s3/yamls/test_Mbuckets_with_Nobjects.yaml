@@ -1,4 +1,5 @@
 config:
+  haproxy: true
   shards: 32
   max_objects: 30
   user_count: 1

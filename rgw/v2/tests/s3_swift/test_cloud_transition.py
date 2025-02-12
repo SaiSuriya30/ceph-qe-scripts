@@ -49,7 +49,7 @@ def test_exec(config, ssh_con):
 
     user_info = s3lib.create_users(config.user_count)[0]
     # authenticate
-    auth = Auth(user_info, ssh_con, ssl=config.ssl)
+    auth = Auth(user_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
     rgw_conn = auth.do_auth()
     s3_client1 = auth.do_auth_using_client()
 

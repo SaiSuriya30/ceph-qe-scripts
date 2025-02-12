@@ -2,6 +2,7 @@
 # Polarian-id: CEPH-83591679
 # Script: ceph-qe-scripts/rgw/v2/tests/aws/test_checksum.py
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 1
   objects_count: 1

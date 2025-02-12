@@ -1,6 +1,7 @@
 # upload type: non multipart
 # script: test_quota_management.py
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 3
   user_max_objects: 100

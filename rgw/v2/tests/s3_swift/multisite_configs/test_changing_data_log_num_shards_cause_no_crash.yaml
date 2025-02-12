@@ -1,6 +1,7 @@
 # script: ceph-qe-scripts/rgw/v2/tests/s3_swift/test_Mbuckets_with_Nobjects.py
 # Polarian ID: CEPH-83574088:Changing the value of rgw_data_log_num_shards parameter should not cause rgw daemon crash
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 1
   objects_count: 10

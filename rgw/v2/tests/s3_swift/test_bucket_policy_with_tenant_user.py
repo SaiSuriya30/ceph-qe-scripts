@@ -124,7 +124,7 @@ def test_exec(config, ssh_con):
 
     if not config.test_ops.get("list_bucket_multipart_uploads", False):
         tenant1_user3_info = tenant1_user_info[2]
-        tenant1_user3_auth = Auth(tenant1_user3_info, ssh_con, ssl=config.ssl)
+        tenant1_user3_auth = Auth(tenant1_user3_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         rgw_tenant1_user3_c = tenant1_user3_auth.do_auth_using_client()
         if config.test_ops.get("list_bucket_versions", False):
             action_list = ["ListBucketVersions"]
@@ -150,11 +150,11 @@ def test_exec(config, ssh_con):
                 tenant_name=tenant2,
                 no_of_users_to_create=config.test_ops["users_count"],
             )
-            tenant2_user1_auth = Auth(tenant2_user_info[0], ssh_con, ssl=config.ssl)
+            tenant2_user1_auth = Auth(tenant2_user_info[0], ssh_con, ssl=config.ssl,haproxy=config.haproxy)
             rgw_tenant2_user1_c = tenant2_user1_auth.do_auth_using_client()
-            tenant2_user2_auth = Auth(tenant2_user_info[1], ssh_con, ssl=config.ssl)
+            tenant2_user2_auth = Auth(tenant2_user_info[1], ssh_con, ssl=config.ssl,haproxy=config.haproxy)
             rgw_tenant2_user2_c = tenant2_user2_auth.do_auth_using_client()
-            tenant2_user3_auth = Auth(tenant2_user_info[2], ssh_con, ssl=config.ssl)
+            tenant2_user3_auth = Auth(tenant2_user_info[2], ssh_con, ssl=config.ssl,haproxy=config.haproxy)
             rgw_tenant2_user3_c = tenant2_user3_auth.do_auth_using_client()
             additional_aws_principle += [
                 f"arn:aws:iam::{tenant2}:user/{tenant2_user_info[0]['user_id']}",
@@ -165,8 +165,8 @@ def test_exec(config, ssh_con):
     tenant1_user1_info = tenant1_user_info[0]
     tenant1_user2_info = tenant1_user_info[1]
 
-    tenant1_user1_auth = Auth(tenant1_user1_info, ssh_con, ssl=config.ssl)
-    tenant1_user2_auth = Auth(tenant1_user2_info, ssh_con, ssl=config.ssl)
+    tenant1_user1_auth = Auth(tenant1_user1_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
+    tenant1_user2_auth = Auth(tenant1_user2_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
 
     rgw_tenant1_user1 = tenant1_user1_auth.do_auth()
     rgw_tenant1_user1_c = tenant1_user1_auth.do_auth_using_client()

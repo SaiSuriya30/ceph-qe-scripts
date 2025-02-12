@@ -2,6 +2,7 @@
 # Polarion TC : CEPH-83574600
 # script: nfs_cluster.py
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 2
   test_ops:

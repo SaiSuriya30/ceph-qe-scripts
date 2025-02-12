@@ -62,7 +62,7 @@ def test_exec(config, ssh_con):
     all_users_info = s3lib.create_users(config.user_count)
     for each_user in all_users_info:
         # authenticate
-        auth = Auth(each_user, ssh_con, ssl=config.ssl)
+        auth = Auth(each_user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         rgw_conn = auth.do_auth()
 
         period_details = json.loads(utils.exec_shell_cmd("radosgw-admin period get"))
@@ -86,7 +86,7 @@ def test_exec(config, ssh_con):
 
         rgw_ssh_con = utils.connect_remote(node_rgw)
         if config.test_ops.get("write_io_verify_another_site", False):
-            other_site_auth = Auth(each_user, rgw_ssh_con, ssl=config.ssl)
+            other_site_auth = Auth(each_user, rgw_ssh_con, ssl=config.ssl,haproxy=config.haproxy)
             other_site_rgw_conn = other_site_auth.do_auth()
 
         # create buckets
@@ -122,7 +122,7 @@ def test_exec(config, ssh_con):
     if config.test_ops.get("dest_param_owner_translation", False):
         log.info("creating new user and its owned bucket for sync destination")
         new_users_info = s3lib.create_users(config.user_count)
-        auth = Auth(new_users_info[0], ssh_con, ssl=config.ssl)
+        auth = Auth(new_users_info[0], ssh_con, ssl=config.ssl,haproxy=config.haproxy)
         new_rgw_conn = auth.do_auth()
         new_bkt_name = utils.gen_bucket_name_from_userid(new_users_info[0]["user_id"])
         log.info(
@@ -167,7 +167,7 @@ def test_exec(config, ssh_con):
     if config.test_ops.get("create_bucket", False):
         for each_user in all_users_info:
             # authenticate
-            auth = Auth(each_user, ssh_con, ssl=config.ssl)
+            auth = Auth(each_user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
             rgw_conn = auth.do_auth()
             if utils.is_cluster_multisite():
                 if config.test_ops.get("modify_zonegroup_policy", False):

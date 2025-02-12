@@ -2,6 +2,7 @@
 # script: test_bucket_policy_with_tenant_user.py
 # BZ : https://bugzilla.redhat.com/show_bug.cgi?id=2180415
 config:
+    haproxy: true
     user_count: 2
     bucket_count: 2
     objects_count: 100

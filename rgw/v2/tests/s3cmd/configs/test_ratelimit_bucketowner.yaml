@@ -1,6 +1,7 @@
 # script: test_rate_limit.py
 # Polarion ID : CEPH-83574920
 config:
+  haproxy: true
   user_count: 2
   bucket_count: 1
   bucket_max_read_ops: 2

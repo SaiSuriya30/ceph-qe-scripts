@@ -1,5 +1,6 @@
 # TC Ids - CEPH-10347
 config:
+   haproxy: true
    user_count: 1
    bucket_count: 10
    objects_count: 100

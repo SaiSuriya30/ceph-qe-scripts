@@ -1,5 +1,6 @@
 # test_bucket_lc_object_exp_multipart.py
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 2
   objects_count: 100

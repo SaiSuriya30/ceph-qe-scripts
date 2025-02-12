@@ -90,7 +90,7 @@ def test_exec(config, ssh_con):
         "user_id": v3_as_json["swift_keys"][0]["user"],
         "key": v3_as_json["swift_keys"][0]["secret_key"],
     }
-    auth = Auth(user_info, ssh_con, is_secure=config.ssl)
+    auth = Auth(user_info, ssh_con, is_secure=config.ssl,haproxy=config.haproxy)
     rgw = auth.do_auth()
     for cc in range(config.container_count):
         container_name = utils.gen_bucket_name_from_userid(

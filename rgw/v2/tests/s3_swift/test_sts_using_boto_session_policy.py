@@ -94,7 +94,7 @@ def test_exec(config, ssh_con):
     else:
         log.info("RGW service restarted")
 
-    auth = Auth(user1, ssh_con, ssl=config.ssl)
+    auth = Auth(user1, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
     iam_client = auth.do_auth_iam_client()
     user1_rgw_client = auth.do_auth_using_client()
 
@@ -135,7 +135,7 @@ def test_exec(config, ssh_con):
     log.info("put_policy_response")
     log.info(put_policy_response)
 
-    auth = Auth(user2, ssh_con, ssl=config.ssl)
+    auth = Auth(user2, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
     sts_client = auth.do_auth_sts_client()
 
     log.info("assuming role")
@@ -156,7 +156,7 @@ def test_exec(config, ssh_con):
     }
 
     log.info("got the credentials after assume role")
-    s3client = Auth(assumed_role_user_info, ssh_con, ssl=config.ssl)
+    s3client = Auth(assumed_role_user_info, ssh_con, ssl=config.ssl, haproxy=config.haproxy)
     s3_client_rgw = s3client.do_auth()
     sts_user_rgw_client = s3client.do_auth_using_client()
     sts_user_rgw_sns_client = auth.do_auth_sns_client()

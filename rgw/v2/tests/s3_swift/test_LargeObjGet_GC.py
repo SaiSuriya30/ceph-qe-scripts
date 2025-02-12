@@ -39,7 +39,7 @@ def test_exec(config, ssh_con):
     # create user
     user_info = s3lib.create_users(config.user_count)
     user_info = user_info[0]
-    auth = Auth(user_info, ssh_con, ssl=config.ssl)
+    auth = Auth(user_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
     rgw_conn = auth.do_auth()
     rgw_conn2 = auth.do_auth_using_client()
     log.info("no of buckets to create: %s" % config.bucket_count)

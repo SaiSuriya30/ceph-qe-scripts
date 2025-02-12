@@ -1,6 +1,7 @@
 # Polarian TC : CEPH-83575143
 # script: test_s3cmd_bucket_granular_sync_policy.py
 config:
+    haproxy: true
     user_count: 1
     bucket_count: 1
     objects_count: 100

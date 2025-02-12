@@ -2,6 +2,7 @@
 # script: test_versioning_with_objects.py
 # covers even for CEPH-9223
 config:
+     haproxy: true
      user_count: 1
      bucket_count: 2
      objects_count: 100

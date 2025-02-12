@@ -40,7 +40,7 @@ def test_exec(config, ssh_con):
 
     all_users_info = s3lib.create_users(1)
     # authenticate
-    auth = Auth(all_users_info[0], ssh_con, ssl=config.ssl)
+    auth = Auth(all_users_info[0], ssh_con, ssl=config.ssl,haproxy=config.haproxy)
     rgw_conn = auth.do_auth()
 
     if config.set_acl:

@@ -1,5 +1,6 @@
 #CEPH-83574832
 config:
+  haproxy: true
   user_count: 1
   bucket_count: 1
   objects_count: 1

@@ -1,6 +1,7 @@
 # test case id: CEPH-83574431
 # script: test_dynamic_bucket_resharding.py
 config:
+  haproxy: true
   objects_count: 100
   version_count: 4
   sharding_type: dynamic

@@ -1,5 +1,6 @@
 # script: test_check_sharding_enabled.py
 # polarion TC: CEPH-10740
 config:
+    haproxy: true
     test_ops:
         zonegroup_rename: true
