@@ -112,6 +112,7 @@ def test_exec(config, ssh_con):
                 # delete bucket and objects
                 if config.test_ops["delete_bucket"] is True:
                     log.info("Deleting buckets and objects")
+                    time.sleep(10)
                     reusable.delete_bucket(bucket)
 
         if config.user_remove:
