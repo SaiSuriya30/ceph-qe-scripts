@@ -143,6 +143,7 @@ def test_exec(config, ssh_con):
         objects_created_list = []
         if config.test_ops.get("create_bucket", False):
             log.info("no of buckets to create: %s" % config.bucket_count)
+            time.sleep(10)
             for bc in range(config.bucket_count):
                 bucket_name_to_create = utils.gen_bucket_name_from_userid(
                     each_user["user_id"], rand_no=bc
