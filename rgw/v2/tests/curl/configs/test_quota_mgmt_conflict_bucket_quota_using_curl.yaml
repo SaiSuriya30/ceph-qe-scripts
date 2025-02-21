@@ -1,7 +1,6 @@
 # script: test_quota_using_curl.py
 # polarion: CEPH-83581391
 config:
-  haproxy: true
   user_count: 1
   bucket_count: 1
   objects_count: 100
