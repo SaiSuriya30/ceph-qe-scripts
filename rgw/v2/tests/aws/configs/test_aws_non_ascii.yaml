@@ -1,7 +1,6 @@
 # script: test_aws.py
 # polarion-ID: CEPH-83572765
 config:
-  haproxy: true
   user_count: 1
   bucket_count: 1
   objects_count: 1
