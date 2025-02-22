@@ -163,7 +163,7 @@ def test_exec(config, ssh_con):
         users_info.append(user_info)
         if config.test_ops.get("enable_version_by_s3", False):
             write_bucket_io_info = BucketIoInfo()
-            auth_s3 = s3_auth(user_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
+            auth_s3 = s3_auth(user_info, ssh_con, ssl=config.ssl)
             s3_rgw_conn = auth_s3.do_auth()
             ip_and_port = s3cmd_reusable.get_rgw_ip_and_port(ssh_con)
             s3cmd_auth.do_auth(user_info, ip_and_port)
@@ -848,7 +848,7 @@ def test_exec(config, ssh_con):
                 )
             log.info("With swift at root set, S3 access should fail")
             bucket_name_to_create = "test_bucket"
-            auth_s3 = s3_auth(user_info, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
+            auth_s3 = s3_auth(user_info, ssh_con, ssl=config.ssl)
             s3_rgw_conn = auth_s3.do_auth()
             try:
                 bucket = reusable.create_bucket(
