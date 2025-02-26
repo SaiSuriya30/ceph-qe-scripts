@@ -247,6 +247,10 @@ def get_rgw_ip_and_port(ssh_con=None):
         hostname = stdout.readline().strip()
         ip = socket.gethostbyname(str(hostname))
         port = utils.get_radosgw_port_no(ssh_con)
+    elif config and config.haproxy:
+        hostname = socket.gethostname()
+        ip = socket.gethostbyname(hostname)
+        port ="5000"    
     else:
         hostname = socket.gethostname()
         ip = socket.gethostbyname(hostname)
