@@ -1,5 +1,4 @@
 config:
-  haproxy: true
   container_count: 2
   objects_count: 1
   large_object: true
