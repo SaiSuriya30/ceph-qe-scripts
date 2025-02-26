@@ -99,7 +99,7 @@ def test_exec(config, ssh_con):
         tenant_name=tenant, user_id=user_name, displayname=user_name
     )
     user_info = umgmt.create_subuser(tenant_name=tenant, user_id=user_name)
-    auth = Auth(user_info, ssh_con, config.ssl,haproxy=config.haproxy)
+    auth = Auth(user_info, ssh_con, config.ssl)
     rgw = auth.do_auth()
 
     container_name = utils.gen_bucket_name_from_userid(user_info["user_id"], rand_no=0)
