@@ -1,5 +1,4 @@
 config:
- haproxy: true
  user_count: 1
  encryption_keys: s3
  bucket_count: 2
