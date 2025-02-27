@@ -35,12 +35,12 @@ sys.path.append(os.path.abspath(os.path.join(__file__, "../../../..")))
 import v2.utils.utils as utils
 from botocore.exceptions import ClientError
 from v2.lib import resource_op
-from v2.lib.aws import auth as aws_auth
+from v2.lib.aws import  as aws_
 from v2.lib.aws.resource_op import AWS
 from v2.lib.exceptions import RGWBaseException, TestExecError
 from v2.lib.resource_op import Config
 from v2.lib.rgw_config_opts import CephConfOp, ConfigOpts
-from v2.lib.s3.auth import Auth
+from v2.lib.s3. import 
 from v2.lib.s3.write_io_info import BasicIOInfoStructure, IOInfoInitialize
 from v2.tests.aws import reusable as aws_reusable
 from v2.tests.s3_swift import reusable as s3_reusable
@@ -70,7 +70,7 @@ def test_exec(config, ssh_con):
     user_info = resource_op.create_users(no_of_users_to_create=2)
     # user1 is the owner
     user1, user2 = user_info[0], user_info[1]
-    aws_auth.do_auth_aws(user1)
+    aws_.do__aws(user1)
     bucket_name = utils.gen_bucket_name_from_userid(user1["user_id"])
     log.info(f"creating bucket with name: {bucket_name}")
     cli_aws = AWS(ssl=config.ssl)
@@ -88,7 +88,7 @@ def test_exec(config, ssh_con):
         "global", ConfigOpts.rgw_sts_key, session_encryption_token, ssh_con
     )
     ceph_config_set.set_to_ceph_conf(
-        "global", ConfigOpts.rgw_s3_auth_use_sts, "True", ssh_con
+        "global", ConfigOpts.rgw_s3__use_sts, "True", ssh_con
     )
 
     srv_restarted = rgw_service.restart(ssh_con)
@@ -98,7 +98,7 @@ def test_exec(config, ssh_con):
     else:
         log.info("RGW service restarted")
 
-    auth = Auth(user1, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
+    auth = Auth(user1, ssh_con, ssl=config.ssl)
     iam_client = auth.do_auth_iam_client()
 
     policy_document = json.dumps(config.sts["policy_document"]).replace(" ", "")
@@ -132,7 +132,7 @@ def test_exec(config, ssh_con):
 
         log.info(f"put_policy_response {put_policy_response}")
 
-        auth = Auth(user2, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
+        auth = Auth(user2, ssh_con, ssl=config.ssl)
         sts_client = auth.do_auth_sts_client()
 
         assume_role_response = sts_client.assume_role(
