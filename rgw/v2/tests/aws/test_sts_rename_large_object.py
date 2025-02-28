@@ -35,7 +35,7 @@ sys.path.append(os.path.abspath(os.path.join(__file__, "../../../..")))
 import v2.utils.utils as utils
 from botocore.exceptions import ClientError
 from v2.lib import resource_op
-from v2.lib.aws import  as aws_
+from v2.lib.aws import auth as aws_auth
 from v2.lib.aws.resource_op import AWS
 from v2.lib.exceptions import RGWBaseException, TestExecError
 from v2.lib.resource_op import Config
