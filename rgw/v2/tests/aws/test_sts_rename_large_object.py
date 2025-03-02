@@ -70,7 +70,7 @@ def test_exec(config, ssh_con):
     user_info = resource_op.create_users(no_of_users_to_create=2)
     # user1 is the owner
     user1, user2 = user_info[0], user_info[1]
-    aws_.do__aws(user1)
+    aws_auth.do_auth_aws(user1)
     bucket_name = utils.gen_bucket_name_from_userid(user1["user_id"])
     log.info(f"creating bucket with name: {bucket_name}")
     cli_aws = AWS(ssl=config.ssl)
@@ -88,7 +88,7 @@ def test_exec(config, ssh_con):
         "global", ConfigOpts.rgw_sts_key, session_encryption_token, ssh_con
     )
     ceph_config_set.set_to_ceph_conf(
-        "global", ConfigOpts.rgw_s3__use_sts, "True", ssh_con
+        "global", ConfigOpts.rgw_s3_auth_use_sts, "True", ssh_con
     )
 
     srv_restarted = rgw_service.restart(ssh_con)
