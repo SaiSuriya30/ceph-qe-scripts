@@ -51,7 +51,7 @@ def test_exec(config, ssh_con):
     all_users_info = s3lib.create_users(config.user_count)
 
     for each_user in all_users_info:
-        auth = Auth(each_user, ssh_con, ssl=config.ssl,haproxy=config.haproxy)
+        auth = Auth(each_user, ssh_con, ssl=config.ssl)
         rgw_conn = auth.do_auth()
         log.info(f"Creating {config.bucket_count} buckets for {each_user['user_id']}")
         for bc in range(config.bucket_count):
