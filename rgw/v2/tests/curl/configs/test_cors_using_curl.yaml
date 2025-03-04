@@ -1,7 +1,6 @@
 # script: test_cors_using_curl.py
 # polarion: CEPH-10355
 config:
-  haproxy: true
   user_count: 1
   bucket_count: 1
   objects_count: 25
