@@ -1,7 +1,6 @@
 # Ploarion ID : CEPH-11148-s3:PutBucketWebsite with users in same tenant
 # script: test_bucket_policy_with_tenant_user.py
 config:
-    haproxy: true
     bucket_count: 2
     objects_count: 100
     rgw_enable_static_website: true
